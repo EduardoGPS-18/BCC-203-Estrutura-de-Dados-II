@@ -1,0 +1,10 @@
+{
+  "files.associations": {
+    "*.html.erb": "html",
+    "*.hbs": "html",
+    "file-interface.h": "c",
+    "stdlib.h": "c",
+    "student.h": "c",
+    "typeinfo": "c"
+  }
+}
