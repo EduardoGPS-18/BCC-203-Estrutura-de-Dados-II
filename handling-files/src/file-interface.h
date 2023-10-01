@@ -7,10 +7,7 @@
 
 #include "./student.h"
 
-bool storeStudent(Student* student);
 bool storeStudents(Student** student, int size);
-
-Student readStudent();
-Student** readStudentFile();
+Student** readStudents(int* size);
 
 #endif  // FILE_INTERFACE_H

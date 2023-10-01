@@ -25,7 +25,7 @@ void store() {
 void read() {
   printf("--------READ---------\n");
   int size;
-  Student** students = readStudentFile(&size);
+  Student** students = readStudents(&size);
 
   if (students == NULL) {
     printf("Ocorreu um erro ao ler os estudantes!");

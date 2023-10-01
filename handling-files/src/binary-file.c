@@ -1,7 +1,5 @@
 #include "./binary-file.h"
 
-bool storeStudent(Student* student) {}
-
 bool storeStudents(Student** students, int size) {
   FILE* file = fopen("../binary-file", "wb");
   if (ferror(file)) return false;
@@ -19,9 +17,7 @@ bool storeStudents(Student** students, int size) {
   return true;
 }
 
-Student readStudent() {}
-
-Student** readStudentFile(int* pSize) {
+Student** readStudents(int* pSize) {
   FILE* file = fopen("../binary-file", "rb");
   if (ferror(file)) {
     printf("Erro ao abrir o arquivo!!\n");
