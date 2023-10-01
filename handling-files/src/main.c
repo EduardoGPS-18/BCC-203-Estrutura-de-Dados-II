@@ -9,14 +9,14 @@
 
 void store() {
   printf("--------STORE---------\n");
-  Student* students = malloc(sizeof(Student) * STUDENTS_SIZE);
+  Student** students = malloc(sizeof(Student*) * STUDENTS_SIZE);
   students[0] = createStudent("Carlos Santiago", "1");
   students[1] = createStudent("Mauro Antonio", "2");
   students[2] = createStudent("Paulo Silva", "3");
 
   bool storeWithSuccess = storeStudents(students, STUDENTS_SIZE);
   if (!storeWithSuccess) {
-    printf("Ocorreu um erro salvando os estudantes");
+    printf("Ocorreu um erro salvando os estudantes!");
     return;
   }
   showStudents(students, STUDENTS_SIZE);
@@ -25,9 +25,12 @@ void store() {
 void read() {
   printf("--------READ---------\n");
   int size;
-  Student* students = readStudentFile(&size);
+  Student** students = readStudentFile(&size);
 
-  if (students == NULL) return;
+  if (students == NULL) {
+    printf("Ocorreu um erro ao ler os estudantes!");
+    return;
+  }
 
   showStudents(students, size);
 }

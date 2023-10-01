@@ -1,27 +1,27 @@
 #include "./binary-file.h"
 
-bool storeStudent(Student student) {}
+bool storeStudent(Student* student) {}
 
-bool storeStudents(Student* students, int size) {
+bool storeStudents(Student** students, int size) {
   FILE* file = fopen("../binary-file", "wb");
   if (ferror(file)) return false;
 
   fwrite(&size, 1, sizeof(int), file);
   if (ferror(file)) return false;
 
-  fwrite(students, sizeof(Student), size, file);
-  if (ferror(file)) return false;
-
-  if (fclose(file) != 0) {
-    return false;
+  for (int i = 0; i < size; i++) {
+    fwrite(students[i], sizeof(Student), 1, file);
+    if (ferror(file)) return false;
   }
+
+  if (fclose(file) != 0) return false;
 
   return true;
 }
 
 Student readStudent() {}
 
-Student* readStudentFile(int* pSize) {
+Student** readStudentFile(int* pSize) {
   FILE* file = fopen("../binary-file", "rb");
   if (ferror(file)) {
     printf("Erro ao abrir o arquivo!!\n");
@@ -35,11 +35,14 @@ Student* readStudentFile(int* pSize) {
   }
 
   int size = (*pSize);
-  Student* students = malloc(sizeof(Student) * size);
-  fread(students, sizeof(Student), size, file);
-  if (ferror(file)) {
-    printf("Erro ao ler os estudantes!!\n");
-    return NULL;
+  Student** students = malloc(sizeof(Student*) * size);
+  for (int i = 0; i < size; i++) {
+    students[i] = malloc(sizeof(Student));
+    fread(students[i], sizeof(Student), 1, file);
+    if (ferror(file)) {
+      printf("Erro ao ler os estudantes!!\n");
+      return NULL;
+    }
   }
 
   if (fclose(file) != 0) {

@@ -14,9 +14,9 @@ bool storeStudent(Student* student) {
 bool storeStudents(Student** students, int size) {
   FILE* file = fopen("../text-file.txt", "w");
   if (file == NULL) return false;
-  for (int i = 0; i < size; i++) {
+  for (int i = 0; i < size; i++)
     fprintf(file, "%s %s\n", students[i]->name, students[i]->registration);
-  }
+
   if (ferror(file)) return false;
 
   return true;

@@ -10,7 +10,7 @@ typedef struct {
   char registration[31];
 } Student;
 
-Student createStudent(char* name, char* registration);
-void showStudents(Student* students, int size);
+Student* createStudent(char* name, char* registration);
+void showStudents(Student** students, int size);
 
 #endif  // STUDENT_H
