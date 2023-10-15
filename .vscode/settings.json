@@ -5,6 +5,7 @@
     "file-interface.h": "c",
     "stdlib.h": "c",
     "student.h": "c",
-    "typeinfo": "c"
+    "typeinfo": "c",
+    "students.h": "c"
   }
 }
